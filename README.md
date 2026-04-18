@@ -11,7 +11,7 @@ A conversational AI agent for a university's admissions office that helps prospe
 
 - **Multi-turn Conversation**: Maintains context within a session to provide coherent responses
 
-- **Graceful Escalation**: When questions fall outside the available tools, the agent recommends speaking with an enrollment counselor
+- **Graceful Escalation**: When questions fall outside of available tools, agent recommends speaking with an enrollment counselor
 
 - **Mock Data System**: Uses hardcoded mock data for 4 programs and 3 applicants
 
@@ -30,10 +30,10 @@ Student Agent/
 
 ## Setup Instructions
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Sahilcoder4/Student_agent.git
 cd "Student Agent"
 ```
 
@@ -59,25 +59,25 @@ pip install -r requirements.txt
 ### 4. Set Up Environment Variables
 
 ```bash
-# Copy the example environment file
+# Copy example environment file
 cp .env.example .env
 
 # Edit .env and add your OpenAI API key
 # OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### 5. Run the Agent
+### 5. Run Agent
 
-#### Test the 5-Turn Conversation:
+#### Interactive Mode (Default):
 ```bash
 python student_agent.py
 ```
 
-#### Run Interactive Mode:
+#### Test 5-Turn Conversation:
 ```bash
 python -c "
-from student_agent import run_conversation
-run_conversation()
+from student_agent import run_test_conversation
+run_test_conversation()
 "
 ```
 
@@ -127,19 +127,19 @@ Returns deadline information including:
 The agent successfully handles the required 5-turn conversation:
 
 **Turn 1:** "Hi, what programs do you offer in computer science?"
-- ✅ Responds with Computer Science MS program details
+- Responds with Computer Science MS program details
 
 **Turn 2:** "What's the application deadline for that?"  
-- ✅ Provides deadlines for Computer Science MS program
+- Provides deadlines for Computer Science MS program
 
 **Turn 3:** "I already applied. My ID is APP-1042. What's my status?"
-- ✅ Returns application status for John Smith
+- Returns application status for John Smith
 
 **Turn 4:** "Can I get a fee waiver?"
-- ✅ Escalates to enrollment counselor appropriately
+- Escalates to enrollment counselor appropriately
 
 **Turn 5:** "What documents do I still need to submit?"
-- ✅ Provides document requirements based on application status
+- Provides document requirements based on application status
 
 ## Docker Setup
 
@@ -157,12 +157,12 @@ docker-compose run --rm student-agent python student_agent.py
 
 ### Using Docker Directly
 
-1. **Build the Docker image:**
+1. **Build Docker image:**
 ```bash
 docker build -t student-agent .
 ```
 
-2. **Run the container:**
+2. **Run container:**
 ```bash
 docker run --rm -it student-agent python student_agent.py
 ```
@@ -202,13 +202,13 @@ The agent uses a **rule-based approach** with tool integration:
 
 ## Assignment Requirements Compliance
 
-✅ **Three Tools Implemented**: get_program_info, check_application_status, get_deadlines  
-✅ **Mock Data**: 4 programs and 3 applicants with realistic data  
-✅ **Agent Loop**: Multi-turn conversation with context memory  
-✅ **Graceful Escalation**: Handles unsupported questions appropriately  
-✅ **Test Conversation**: 5-turn conversation demonstrated and logged  
-✅ **Documentation**: Complete setup and usage instructions  
-✅ **Docker Support**: Full containerization with Docker and Docker Compose  
+**Three Tools Implemented**: get_program_info, check_application_status, get_deadlines  
+**Mock Data**: 4 programs and 3 applicants with realistic data  
+**Agent Loop**: Multi-turn conversation with context memory  
+**Graceful Escalation**: Handles unsupported questions appropriately  
+**Test Conversation**: 5-turn conversation demonstrated and logged  
+**Documentation**: Complete setup and usage instructions  
+**Docker Support**: Full containerization with Docker and Docker Compose  
 
 ## Future Enhancements
 
