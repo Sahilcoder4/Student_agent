@@ -159,6 +159,10 @@ class SimpleAgent:
         if any(keyword in user_message_lower for keyword in ["program", "offer", "major", "degree"]):
             return self.handle_program_query(user_message)
         
+        # Check for specific program names (more specific than general keywords)
+        if any(program in user_message_lower for program in ["computer science", "data science", "cybersecurity"]):
+            return self.handle_program_query(user_message)
+        
         # Check if the message asks for deadlines
         if any(keyword in user_message_lower for keyword in ["deadline", "due date", "when", "date"]):
             return self.handle_deadline_query(user_message)
@@ -174,6 +178,10 @@ class SimpleAgent:
         # Check if it's about documents
         if any(keyword in user_message_lower for keyword in ["documents", "submit", "need", "required"]):
             return self.handle_document_query(user_message)
+        
+        # Check for common conversational words that shouldn't escalate
+        if any(keyword in user_message_lower for keyword in ["thanks", "bye", "thank you", "goodbye", "ok", "yes", "no"]):
+            return "You're welcome! Is there anything else I can help you with regarding our programs, deadlines, or application status?"
         
         # Default to escalation for unsupported questions
         return self.handle_escalation()
